@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav_graph"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.sign.dayschallenge.ui.fragments.ProfileFragment"
+        tools:layout="@layout/profile_fragment_layout"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/challengeFragment"
+        android:name="com.sign.dayschallenge.ui.fragments.ChallengeFragment"
+        android:label="ChallengeFragment" />
+    <fragment
+        android:id="@+id/editChallengeFragment"
+        android:name="com.sign.dayschallenge.ui.fragments.EditChallengeFragment"
+        android:label="EditChallengeFragment" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.sign.dayschallenge.ui.fragments.MainFragment"
+        tools:layout="@layout/main_fragment_layout"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_editChallengeFragment"
+            app:destination="@id/editChallengeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_challengeFragment"
+            app:destination="@id/challengeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_createChallengeFragment"
+            app:destination="@id/createChallengeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createChallengeFragment"
+        android:name="com.sign.dayschallenge.ui.fragments.CreateChallengeFragment"
+        tools:layout="@layout/create_challenge_fragment_layout"
+        android:label="CreateChallengeFragment" />
+</navigation>
