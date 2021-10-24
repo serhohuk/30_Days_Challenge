@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.sign.dayschallenge.R
+import com.sign.dayschallenge.application.MyApplication
 import com.sign.dayschallenge.data.Challenge
 import com.sign.dayschallenge.data.DayState
 import com.sign.dayschallenge.utils.Constants.Companion.IMAGE_RESOURCE
@@ -32,8 +34,12 @@ class CreateChallengeFragment : Fragment(R.layout.create_challenge_fragment_layo
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val appComponent = (requireActivity().application as MyApplication).appComponent
+        appComponent.inject(this)
+
         btn_save.setOnClickListener {
             viewModel.addChallenge(getChallenge())
+            findNavController().popBackStack()
         }
 
         selector_img.setOnClickListener {

@@ -6,25 +6,41 @@ import android.os.Bundle
 import android.view.View
 import android.widget.GridLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sign.dayschallenge.R
 import com.sign.dayschallenge.adapters.ChallengeAdapter
+import com.sign.dayschallenge.application.MyApplication
 import com.sign.dayschallenge.data.Challenge
+import com.sign.dayschallenge.ui.MainActivity
 import com.sign.dayschallenge.utils.Constants.Companion.PROF_NAME
 import com.sign.dayschallenge.utils.Constants.Companion.SHARED_PREF
+import com.sign.dayschallenge.viewmodel.MainFragmentViewModel
 import kotlinx.android.synthetic.main.main_fragment_layout.*
+import javax.inject.Inject
+import javax.inject.Named
 
 class MainFragment : Fragment(R.layout.main_fragment_layout) {
 
+    @Named("main_view_model")
+    @Inject
+    lateinit var mainViewModelFactory : ViewModelProvider.Factory
+    private val viewModel : MainFragmentViewModel by viewModels { mainViewModelFactory  }
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var challengeAdapter : ChallengeAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val appComponent = (requireActivity().application as MyApplication).appComponent
+        appComponent.inject(this)
         initSharedPreferences()
         initStartScreen()
         setRandomQuote()
+        setRecyclerView()
+        setChallengeItems()
 
         fab_button.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_createChallengeFragment)
@@ -54,11 +70,11 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
             layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL,false)
 
         }
-        //challengeAdapter.differ.submitList()
     }
 
-    private fun getChallengeItems(): List<Challenge>{
-        TODO()
-
+    private fun setChallengeItems(){
+        viewModel.allDataFromDB.observe(viewLifecycleOwner, Observer {
+            challengeAdapter.differ.submitList(it)
+        })
     }
 }

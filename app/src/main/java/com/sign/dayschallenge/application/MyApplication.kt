@@ -3,13 +3,16 @@ package com.sign.dayschallenge.application
 import android.app.Application
 import com.sign.dayschallenge.di.AppComponent
 import com.sign.dayschallenge.di.DaggerAppComponent
+import com.sign.dayschallenge.di.RoomModule
+import com.sign.dayschallenge.ui.fragments.CreateChallengeFragment
+import com.sign.dayschallenge.ui.fragments.MainFragment
 
 class MyApplication : Application() {
 
-    private lateinit var appComponent : AppComponent
+    lateinit var appComponent : AppComponent
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.builder().build()
+        appComponent = DaggerAppComponent.builder().roomModule(RoomModule(this)).build()
     }
 }

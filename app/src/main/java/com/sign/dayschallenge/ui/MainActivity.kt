@@ -9,6 +9,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.sign.dayschallenge.R
+import com.sign.dayschallenge.application.MyApplication
+import com.sign.dayschallenge.di.AppComponent
 import com.sign.dayschallenge.utils.Constants.Companion.PROF_NAME
 import com.sign.dayschallenge.utils.Constants.Companion.SHARED_PREF
 

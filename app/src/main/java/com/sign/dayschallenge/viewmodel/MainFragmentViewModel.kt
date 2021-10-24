@@ -8,10 +8,8 @@ import javax.inject.Inject
 
 class MainFragmentViewModel @Inject constructor(private val repository: MainRepository) : ViewModel() {
 
-    private val allDataFromDB : LiveData<List<Challenge>> = repository.readAllData
+    val allDataFromDB : LiveData<List<Challenge>> = repository.readAllData
 
 
-    fun getAllDataDB() : LiveData<List<Challenge>>{
-        return allDataFromDB
-    }
+
 }
