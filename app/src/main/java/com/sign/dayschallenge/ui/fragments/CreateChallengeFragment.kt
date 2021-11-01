@@ -5,17 +5,20 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.sign.dayschallenge.R
 import com.sign.dayschallenge.application.MyApplication
 import com.sign.dayschallenge.data.Challenge
 import com.sign.dayschallenge.data.DayState
 import com.sign.dayschallenge.utils.Constants.Companion.IMAGE_RESOURCE
 import com.sign.dayschallenge.utils.ImageSelectorDialogFragment
+import com.sign.dayschallenge.utils.Resource
 import com.sign.dayschallenge.viewmodel.ChallengeViewModel
 import kotlinx.android.synthetic.main.create_challenge_fragment_layout.*
 import javax.inject.Inject
@@ -30,7 +33,6 @@ class CreateChallengeFragment : Fragment(R.layout.create_challenge_fragment_layo
     val MY_REQUEST_CODE = 27
     private var resourceImage = 0
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,8 +40,17 @@ class CreateChallengeFragment : Fragment(R.layout.create_challenge_fragment_layo
         appComponent.inject(this)
 
         btn_save.setOnClickListener {
-            viewModel.addChallenge(getChallenge())
-            findNavController().popBackStack()
+            if (tv_title.editText?.text.toString().isEmpty()){
+                Snackbar.make(view,getString(R.string.fill_title),Snackbar.LENGTH_SHORT).setAction(getString(R.string.hide),null).show()
+            }
+            else if (resourceImage==0){
+                Snackbar.make(view,getString(R.string.choose_image),Snackbar.LENGTH_SHORT).setAction(getString(R.string.hide),null).show()
+            }
+            else{
+                viewModel.addChallenge(getChallenge())
+                findNavController().popBackStack()
+            }
+
         }
 
         selector_img.setOnClickListener {

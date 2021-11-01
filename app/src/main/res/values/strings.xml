@@ -7,7 +7,9 @@
     <string name="welcome_back">Welcome back</string>
     <string name="challenge">Challenge</string>
     <string name="progress">1/30</string>
-    
-    
+    <string name="hide">Hide</string>
+    <string name="fill_title">Please fill title field</string>
+    <string name="choose_image">Please choose image</string>
+    <string name="add_new_challenge">Add new challenge</string>
 
 </resources>

@@ -45,6 +45,10 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
         fab_button.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_createChallengeFragment)
         }
+
+        ll_new_challenge.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_createChallengeFragment)
+        }
     }
 
     private fun setRandomQuote(){
@@ -74,7 +78,12 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
 
     private fun setChallengeItems(){
         viewModel.allDataFromDB.observe(viewLifecycleOwner, Observer {
-            challengeAdapter.differ.submitList(it)
+            if (it.size!=0){
+                ll_new_challenge.visibility = View.GONE
+                challengeAdapter.differ.submitList(it)
+            } else{
+                ll_new_challenge.visibility = View.VISIBLE
+            }
         })
     }
 }
