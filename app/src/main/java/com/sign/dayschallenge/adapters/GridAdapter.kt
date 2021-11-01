@@ -27,7 +27,6 @@ class GridAdapter(private val context : Context,
         var item = View.inflate(context, R.layout.grid_image_item,null)
         val image : ImageView = item.findViewById(R.id.iv_grid_item)
         image.setImageResource(images.get(position))
-
         return item
     }
 

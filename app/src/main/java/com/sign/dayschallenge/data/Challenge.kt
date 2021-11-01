@@ -2,6 +2,7 @@ package com.sign.dayschallenge.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity(tableName = "challenge_table")
@@ -13,4 +14,4 @@ data class Challenge(
     val description : String?,
     val daysPassed : Int,
     val daysState : List<DayState>
-)
+) : Serializable

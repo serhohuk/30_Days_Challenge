@@ -17,7 +17,11 @@
     <fragment
         android:id="@+id/challengeFragment"
         android:name="com.sign.dayschallenge.ui.fragments.ChallengeFragment"
-        android:label="ChallengeFragment" />
+        android:label="ChallengeFragment" >
+        <argument
+            android:name="argChallenge"
+            app:argType="com.sign.dayschallenge.data.Challenge" />
+    </fragment>
     <fragment
         android:id="@+id/editChallengeFragment"
         android:name="com.sign.dayschallenge.ui.fragments.EditChallengeFragment"

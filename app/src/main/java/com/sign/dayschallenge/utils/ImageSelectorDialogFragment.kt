@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.GridView
+import androidx.core.view.get
 import androidx.fragment.app.DialogFragment
 import com.sign.dayschallenge.R
 import com.sign.dayschallenge.adapters.GridAdapter
@@ -18,6 +19,7 @@ class ImageSelectorDialogFragment : DialogFragment(), AdapterView.OnItemClickLis
     private val resultCode = 27
     private var images : MutableList<Int>? = null
     private var imageItemResource : Int = 0
+    private var previousPosition = -1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,8 +51,12 @@ class ImageSelectorDialogFragment : DialogFragment(), AdapterView.OnItemClickLis
         return rootView
     }
 
-    override fun onItemClick(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+    override fun onItemClick(adapterView: AdapterView<*>?, view: View?, position: Int, p3: Long) {
+        if (previousPosition!=-1)   adapterView?.get(previousPosition)?.background =context?.getDrawable(android.R.color.transparent)
+        view?.background = context?.getDrawable(R.drawable.stroke_frame);
         imageItemResource = images?.get(position)!!
+        previousPosition = position
+
     }
 
 }

@@ -25,6 +25,10 @@ class ChallengeAdapter : RecyclerView.Adapter<ChallengeAdapter.MyViewHolder>()  
             tv_progress.text = passedDays
             imView.setImageResource(challenge.imgResource)
             tv_title.text = challenge.title
+
+            setOnClickListener {
+                onItemClickListener?.let { it(challenge)  }
+            }
         }
     }
 
@@ -43,4 +47,10 @@ class ChallengeAdapter : RecyclerView.Adapter<ChallengeAdapter.MyViewHolder>()  
     }
 
     val differ = AsyncListDiffer(this,differCallBack)
+
+    private var onItemClickListener : ((Challenge)->Unit)? = null
+
+    fun setOnItemClickListener(listener : (Challenge)->Unit){
+        onItemClickListener = listener
+    }
 }

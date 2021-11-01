@@ -71,7 +71,7 @@ class CreateChallengeFragment : Fragment(R.layout.create_challenge_fragment_layo
             if (resultCode == MY_REQUEST_CODE){
                 data?.let {
                     resourceImage = it.getIntExtra(IMAGE_RESOURCE,0)
-                    selector_img.setImageResource(resourceImage) }
+                    iv_challenge.setImageResource(resourceImage) }
             }
         }
     }

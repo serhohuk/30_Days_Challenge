@@ -3,6 +3,7 @@ package com.sign.dayschallenge.ui.fragments
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Layout
 import android.view.View
 import android.widget.GridLayout
 import androidx.fragment.app.Fragment
@@ -48,6 +49,11 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
 
         ll_new_challenge.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_createChallengeFragment)
+        }
+
+        challengeAdapter.setOnItemClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToChallengeFragment(it)
+            findNavController().navigate(action)
         }
     }
 
