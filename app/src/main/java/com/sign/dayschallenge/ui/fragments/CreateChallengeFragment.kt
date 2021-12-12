@@ -19,6 +19,7 @@ import com.sign.dayschallenge.data.DayState
 import com.sign.dayschallenge.utils.Constants.Companion.IMAGE_RESOURCE
 import com.sign.dayschallenge.utils.ImageSelectorDialogFragment
 import com.sign.dayschallenge.utils.Resource
+import com.sign.dayschallenge.utils.TimeUtil
 import com.sign.dayschallenge.viewmodel.ChallengeViewModel
 import kotlinx.android.synthetic.main.create_challenge_fragment_layout.*
 import javax.inject.Inject
@@ -63,7 +64,7 @@ class CreateChallengeFragment : Fragment(R.layout.create_challenge_fragment_layo
     private fun getChallenge() : Challenge{
         val title = tv_title.editText?.text.toString()
         val description = tv_description.editText?.text.toString()
-        return Challenge(0,title,resourceImage,description,0, listOf(DayState.EMPTY))
+        return Challenge(0,title,resourceImage,description,0, TimeUtil.generateListOfTimes(), (1..30).map { DayState.EMPTY })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

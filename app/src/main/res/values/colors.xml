@@ -9,4 +9,11 @@
     <color name="colorPurpleNavy">#5C5587</color>
     <color name="colorBlueBell">#9B91DB</color>
     <color name="colorIndependence">#44405B</color>
+
+    <!-- DayState colors  -->
+
+    <color name="color_state_empty">#CD4D78</color>
+    <color name="color_state_complete">#5BE35D</color>
+    <color name="color_state_skip">#76A88A</color>
+    <color name="color_state_today">#0092CC</color>
 </resources>

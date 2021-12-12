@@ -1,5 +1,6 @@
 package com.sign.dayschallenge.adapters
 
+import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,5 +53,22 @@ class ChallengeAdapter : RecyclerView.Adapter<ChallengeAdapter.MyViewHolder>()  
 
     fun setOnItemClickListener(listener : (Challenge)->Unit){
         onItemClickListener = listener
+    }
+}
+
+class ChallengeItemDecorator(private val space : Int) : RecyclerView.ItemDecoration() {
+
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        super.getItemOffsets(outRect, view, parent, state)
+        outRect.bottom = space
+        outRect.left = space
+        if ((parent.getChildAdapterPosition(view))%10==4 || (parent.getChildAdapterPosition(view))%10==9){
+            outRect.right = space
+        }
     }
 }
