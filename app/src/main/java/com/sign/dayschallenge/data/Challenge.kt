@@ -13,6 +13,6 @@ data class Challenge(
     val imgResource : Int,
     val description : String?,
     val daysPassed : Int,
-    val daysInMillis : List<Long>,
+    val daysInMillis : List<Long>?,
     val daysState : List<DayState>
 ) : Serializable

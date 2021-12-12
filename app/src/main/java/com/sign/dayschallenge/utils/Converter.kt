@@ -17,4 +17,15 @@ class Converter {
         val type = object : TypeToken<List<DayState>>(){}.type
         return Gson().fromJson(string, type)
     }
+
+    @TypeConverter
+    fun fromMillisList(list : List<Long>?) : String? {
+        return Gson().toJson(list)
+    }
+
+    @TypeConverter
+    fun toMillisList(string : String?) : List<Long>?{
+        val type = object : TypeToken<List<Long>?>(){}.type
+        return Gson().fromJson(string, type)
+    }
 }

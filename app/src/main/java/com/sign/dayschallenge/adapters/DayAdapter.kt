@@ -25,7 +25,6 @@ class DayAdapter(val context : Context) : RecyclerView.Adapter<DayAdapter.DayIte
         override fun areContentsTheSame(oldItem: DayState, newItem: DayState): Boolean {
             return oldItem == newItem
         }
-
     }
 
     val differAsync = AsyncListDiffer(this,differUtilCallback)
