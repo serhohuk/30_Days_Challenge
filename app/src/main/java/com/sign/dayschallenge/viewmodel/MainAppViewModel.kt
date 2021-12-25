@@ -25,14 +25,11 @@ class MainAppViewModel @Inject constructor(private val repository: MainRepositor
         val resultDayState = challenge.daysState.toMutableList()
 
         for ((index, value) in challenge.daysState.withIndex()){
-            if (challenge.daysInMillis==null){
-                break
-            }
             if (isTimeOver(challenge.daysInMillis!![index])){
                 break
-            }else if (TimeUtil.getCurrentLocalDateNow() == challenge.daysInMillis[index]){
+            }else if (TimeUtil.getCurrentLocalDateNow() == challenge.daysInMillis[index] && resultDayState[index].name != DayState.COMPLETE_DAY.name ){
                 resultDayState[index] = DayState.TODAY
-            } else if (value.name == DayState.EMPTY.name){
+            } else if (value.name == DayState.EMPTY.name && resultDayState[index].name != DayState.COMPLETE_DAY.name){
                 resultDayState[index] = DayState.SKIP_DAY
             }
         }
