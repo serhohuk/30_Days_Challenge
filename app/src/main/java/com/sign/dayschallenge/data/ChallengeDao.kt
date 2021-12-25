@@ -12,6 +12,12 @@ interface ChallengeDao {
     @Query("SELECT * FROM challenge_table")
     fun getAllData() : LiveData<List<Challenge>>
 
+    @Query("SELECT id FROM challenge_table")
+    fun getAllIds() : LiveData<Int>
+
+    @Query("UPDATE challenge_table SET daysState =:days WHERE id =:id")
+    suspend fun updateDayState(id: Int, days: List<DayState>)
+
     @Delete
     suspend fun deleteChallenge(challenge: Challenge)
 

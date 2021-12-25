@@ -14,8 +14,8 @@ object TimeUtil {
     fun getCurrentLocalDateNow(): Long {
         val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.US)
         val date = Date()
-        val formatedDate = formatter.format(date)
-        val newDate: Date = formatter.parse(formatedDate)!!
+        val formattedDate = formatter.format(date)
+        val newDate: Date = formatter.parse(formattedDate)!!
         return newDate.time
     }
 
@@ -27,6 +27,13 @@ object TimeUtil {
             currentTime+= DAY_IN_MILLIS
         }
         return result
+    }
+
+    fun isTimeOver(time : Long) : Boolean {
+        if (time>getCurrentLocalDateNow()){
+            return true
+        }
+        return false
     }
 
 

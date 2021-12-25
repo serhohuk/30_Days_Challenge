@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sign.dayschallenge.R
 import com.sign.dayschallenge.adapters.ChallengeItemDecorator
 import com.sign.dayschallenge.adapters.DayAdapter
-import com.sign.dayschallenge.databinding.ActivityMainBinding
 import com.sign.dayschallenge.databinding.ChallengeFragmentLayoutBinding
-import kotlinx.android.synthetic.main.challenge_fragment_layout.*
 
 class ChallengeFragment : Fragment() {
 
@@ -40,9 +38,8 @@ class ChallengeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ChallengeFragmentLayoutBinding.inflate(inflater,container,false)
-        val view = binding.root
-        return view
+        _binding = ChallengeFragmentLayoutBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     private fun initRecyclerView(){
