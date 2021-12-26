@@ -28,6 +28,7 @@ class ChallengeFragment : Fragment() {
 
         binding.ivChallengeIcon.setImageDrawable(context?.getDrawable(args.argChallenge.imgResource))
         binding.tvDescription.text = args.argChallenge.description
+        binding.tvTitle.text = args.argChallenge.title
 
         initRecyclerView()
 
