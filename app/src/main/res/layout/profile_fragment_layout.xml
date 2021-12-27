@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/colorBlueBell"
+    android:background="@color/background"
     android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        android:text="Confirm"
-        android:backgroundTint="@color/colorPurpleNavy"/>
+        android:text="@string/confirm"
+        android:backgroundTint="@color/colorPrimaryDark"/>
 
 </LinearLayout>

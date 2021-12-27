@@ -11,5 +11,9 @@
     <string name="fill_title">Please fill title field</string>
     <string name="choose_image">Please choose image</string>
     <string name="add_new_challenge">Add new challenge</string>
-
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="challenge_icon">Challenge Icon</string>
+    <string name="confirm">Confirm</string>
 </resources>
