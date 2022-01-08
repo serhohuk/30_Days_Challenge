@@ -21,19 +21,43 @@ class MainAppViewModel @Inject constructor(private val repository: MainRepositor
         }
     }
 
+    fun updateChallenge(challenge: Challenge){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateChallenge(challenge)
+        }
+    }
+
     fun getNewDayStateList(challenge : Challenge) : List<DayState>{
         val resultDayState = challenge.daysState.toMutableList()
-
         for ((index, value) in challenge.daysState.withIndex()){
             if (isTimeOver(challenge.daysInMillis!![index])){
-                break
-            }else if (TimeUtil.getCurrentLocalDateNow() == challenge.daysInMillis[index] && resultDayState[index].name != DayState.COMPLETE_DAY.name ){
+                if(value.name == DayState.TODAY.name){
+                    resultDayState[index] = DayState.SKIP_DAY
+                } else break
+            }else if (TimeUtil.getCurrentLocalDateNow() == challenge.daysInMillis!![index] && resultDayState[index].name != DayState.COMPLETE_DAY.name ){
                 resultDayState[index] = DayState.TODAY
-            } else if (value.name == DayState.EMPTY.name && resultDayState[index].name != DayState.COMPLETE_DAY.name){
+            } else if (isTimeOver(challenge.daysInMillis!![index]) && value.name == DayState.EMPTY.name && resultDayState[index].name != DayState.COMPLETE_DAY.name){
                 resultDayState[index] = DayState.SKIP_DAY
             }
         }
         return resultDayState
+    }
+
+    fun updateOneItem(challenge: Challenge, itemStateOrdinal : Int, position : Int): Challenge {
+        val resultList = challenge.daysState.toMutableList()
+        val resultChallenge = challenge
+        when(itemStateOrdinal){
+           1->{
+               resultList[position] = DayState.COMPLETE_DAY
+               resultChallenge.daysPassed = challenge.daysPassed+1
+           }
+           3->{
+               resultList[position] = DayState.SKIP_DAY
+               resultChallenge.daysPassed = challenge.daysPassed-1
+           }
+        }
+        resultChallenge.daysState = resultList
+        return resultChallenge
     }
 
 }

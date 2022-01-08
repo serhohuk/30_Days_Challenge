@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sign.dayschallenge.R
 import com.sign.dayschallenge.adapters.ChallengeAdapter
 import com.sign.dayschallenge.application.MyApplication
@@ -51,9 +52,19 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
             findNavController().navigate(R.id.action_mainFragment_to_createChallengeFragment)
         }
 
-        challengeAdapter.setOnItemClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToChallengeFragment(it)
-            findNavController().navigate(action)
+        challengeAdapter.setOnItemClickListener { challenge, listenerNumber ->
+            if (listenerNumber==0){
+                val action = MainFragmentDirections.actionMainFragmentToChallengeFragment(challenge)
+                findNavController().navigate(action)
+            } else if (listenerNumber==1){
+                MaterialAlertDialogBuilder(requireContext())
+                    .setMessage("Do you want to delete this challenge")
+                    .setTitle("Delete ${challenge.title}?")
+                    .setNegativeButton("No") { _, _ -> }
+                    .setPositiveButton("Yes") { dialog, which ->
+                        challengeAdapter.differ.submitList(viewModel.deleteItem(challenge))
+                    }.show()
+            }
         }
     }
 

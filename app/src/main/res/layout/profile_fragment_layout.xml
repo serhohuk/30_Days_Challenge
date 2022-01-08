@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
         android:text="@string/confirm"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:enabled="false"
+        android:backgroundTint="@color/light_gray"/>
 
 </LinearLayout>

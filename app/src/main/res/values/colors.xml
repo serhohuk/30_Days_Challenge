@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#29B6F6</color>
-    <color name="colorPrimaryDark">#0277BD</color>
+    <color name="colorPrimaryDark">#242bc7</color>
     <color name="colorAccent">#81D4FA</color>
     <color name="colorLiberty">#655BA6</color>
     <color name="colorLibertyBlack">#5C529C</color>
@@ -11,11 +11,12 @@
     <color name="colorIndependence">#44405B</color>
     <color name="full_white">#FFFFFF</color>
     <color name="background">@color/full_white</color>
+    <color name="light_gray">#D3D3D3</color>
 
     <!-- DayState colors  -->
-    <color name="color_state_empty">#CD4D78</color>
+    <color name="color_state_empty">#D5D5D5</color>
     <color name="color_state_complete">#5BE35D</color>
-    <color name="color_state_skip">#76A88A</color>
+    <color name="color_state_skip">#DD4DB9</color>
     <color name="color_state_today">#0092CC</color>
 
 

@@ -17,6 +17,8 @@ import com.sign.dayschallenge.data.DayState
 
 class DayAdapter(val context : Context) : RecyclerView.Adapter<DayAdapter.DayItemViewHolder>() {
 
+    var itemCLickListener : ((Int, Int)->Unit)? = null
+
     private val differUtilCallback = object : DiffUtil.ItemCallback<DayState>(){
         override fun areItemsTheSame(oldItem: DayState, newItem: DayState): Boolean {
             return oldItem.name == newItem.name
@@ -39,10 +41,11 @@ class DayAdapter(val context : Context) : RecyclerView.Adapter<DayAdapter.DayIte
 //            itemView.layoutParams = ViewGroup.LayoutParams()
         }
 
-        fun bind(text : String, dayStateValue : Int){
+        fun bind(text : String, dayStateValue : Int,position: Int){
             textNumber.text = text
             when(dayStateValue){
                 DayState.EMPTY.ordinal->{
+                    textNumber.setTextColor(context.resources.getColor(R.color.design_default_color_primary_dark))
                     itemCardView.backgroundTintList = ColorStateList.valueOf(context.resources.getColor(R.color.color_state_empty))
                 }
                 DayState.COMPLETE_DAY.ordinal->{
@@ -55,6 +58,11 @@ class DayAdapter(val context : Context) : RecyclerView.Adapter<DayAdapter.DayIte
                     itemCardView.backgroundTintList = ColorStateList.valueOf(context.resources.getColor(R.color.color_state_today))
                 }
             }
+
+            itemCardView.setOnLongClickListener {
+                itemCLickListener?.invoke(dayStateValue,position)
+                true
+            }
         }
     }
 
@@ -63,7 +71,7 @@ class DayAdapter(val context : Context) : RecyclerView.Adapter<DayAdapter.DayIte
     }
 
     override fun onBindViewHolder(holder: DayItemViewHolder, position: Int) {
-        holder.bind((position+1).toString(),differAsync.currentList[position].ordinal)
+        holder.bind((position+1).toString(),differAsync.currentList[position].ordinal, position)
     }
 
     override fun getItemCount(): Int {

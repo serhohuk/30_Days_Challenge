@@ -1,17 +1,24 @@
 package com.sign.dayschallenge.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sign.dayschallenge.R
 import com.sign.dayschallenge.adapters.ChallengeItemDecorator
 import com.sign.dayschallenge.adapters.DayAdapter
+import com.sign.dayschallenge.data.DayState
 import com.sign.dayschallenge.databinding.ChallengeFragmentLayoutBinding
+import com.sign.dayschallenge.ui.MainActivity
+import com.sign.dayschallenge.utils.ActionResponse
+import com.sign.dayschallenge.utils.DialogUtil
 
 class ChallengeFragment : Fragment() {
 
@@ -32,6 +39,28 @@ class ChallengeFragment : Fragment() {
 
         initRecyclerView()
 
+        dayAdapter.itemCLickListener = { dayState, position->
+            when(dayState){
+                DayState.EMPTY.ordinal, DayState.SKIP_DAY.ordinal ->{
+                    Toast.makeText(requireContext(), "You cant change state here", Toast.LENGTH_SHORT).show()
+                }
+                DayState.TODAY.ordinal->{
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setMessage("Do you want to complete day?")
+                        .setTitle("Change State")
+                        .setNegativeButton("No") { _, _ -> }
+                        .setPositiveButton("Yes") { dialog, which ->
+                            if (activity!=null){
+                                val result = (activity as MainActivity).viewModelApp.updateOneItem(args.argChallenge, 1, position)
+                                (activity as MainActivity).viewModelApp.updateChallenge(result)
+                                dayAdapter.differAsync.submitList(result.daysState)
+                            }
+                        }.show()
+                }
+            }
+
+
+        }
     }
 
     override fun onCreateView(

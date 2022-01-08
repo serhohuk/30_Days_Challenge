@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlueBell">
+    android:background="@drawable/ic_layered_waves_haikei">
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:elevation="2dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/rec_view_challenge"
         app:layout_constraintStart_toStartOf="@+id/rec_view_challenge"
@@ -66,14 +66,14 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:src="@drawable/add_icon"
-            app:tint="@android:color/white" />
+            app:tint="@color/colorAccent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:fontFamily="monospace"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorAccent"
             android:text="@string/add_new_challenge" />
     </LinearLayout>
 
@@ -85,7 +85,7 @@
         android:layout_marginBottom="24dp"
         android:text="@string/challenge"
         android:textColor="@android:color/white"
-        app:backgroundTint="@color/colorPurpleNavy"
+        app:backgroundTint="@color/colorAccent"
         app:icon="@drawable/add_icon"
         app:iconTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"

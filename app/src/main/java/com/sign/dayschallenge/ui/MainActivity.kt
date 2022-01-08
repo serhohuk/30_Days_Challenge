@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     @Named("main_app_view_model")
     @Inject
     lateinit var mainViewModelFactory : ViewModelProvider.Factory
-    private val viewModelApp : MainAppViewModel by viewModels { mainViewModelFactory  }
+    val viewModelApp : MainAppViewModel by viewModels { mainViewModelFactory  }
 
     private lateinit var sharedPreferences : SharedPreferences
 

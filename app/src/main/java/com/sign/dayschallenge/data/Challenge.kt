@@ -8,11 +8,11 @@ import java.io.Serializable
 @Entity(tableName = "challenge_table")
 data class Challenge(
     @PrimaryKey(autoGenerate = true)
-    val id : Int,
-    val title : String,
-    val imgResource : Int,
-    val description : String?,
-    val daysPassed : Int,
-    val daysInMillis : List<Long>?,
-    val daysState : List<DayState>
+    var id : Int,
+    var title : String,
+    var imgResource : Int,
+    var description : String?,
+    var daysPassed : Int,
+    var daysInMillis : List<Long>?,
+    var daysState : List<DayState>
 ) : Serializable

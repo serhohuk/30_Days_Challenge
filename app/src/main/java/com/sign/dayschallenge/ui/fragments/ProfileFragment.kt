@@ -3,6 +3,8 @@ package com.sign.dayschallenge.ui.fragments
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
@@ -25,6 +27,26 @@ class ProfileFragment : Fragment(R.layout.profile_fragment_layout) {
         sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
 
         initDropDownMenu()
+
+        profName.editText?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val text = s.toString()
+                if (text.isNullOrEmpty()){
+                    btn_confirm.isEnabled = false
+                    btn_confirm.backgroundTintList = resources.getColorStateList(R.color.light_gray)
+                }else{
+                    btn_confirm.isEnabled = true
+                    btn_confirm.backgroundTintList = resources.getColorStateList(R.color.design_default_color_primary_dark)
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
 
         btn_confirm.setOnClickListener {
             saveProfileInfo()

@@ -30,7 +30,7 @@ object TimeUtil {
     }
 
     fun isTimeOver(time : Long) : Boolean {
-        if (time>getCurrentLocalDateNow()){
+        if (time<getCurrentLocalDateNow()){
             return true
         }
         return false
