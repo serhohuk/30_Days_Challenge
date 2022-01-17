@@ -24,6 +24,9 @@ import com.sign.dayschallenge.viewmodel.MainFragmentViewModel
 import kotlinx.android.synthetic.main.main_fragment_layout.*
 import javax.inject.Inject
 import javax.inject.Named
+import android.view.animation.RotateAnimation
+import com.sign.dayschallenge.utils.AnimUtil.Companion.rotateView
+
 
 class MainFragment : Fragment(R.layout.main_fragment_layout) {
 
@@ -52,14 +55,18 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
             findNavController().navigate(R.id.action_mainFragment_to_createChallengeFragment)
         }
 
+        iv_settings.setOnClickListener {
+            rotateView(60f, iv_settings)
+        }
+
         challengeAdapter.setOnItemClickListener { challenge, listenerNumber ->
             if (listenerNumber==0){
                 val action = MainFragmentDirections.actionMainFragmentToChallengeFragment(challenge)
                 findNavController().navigate(action)
             } else if (listenerNumber==1){
                 MaterialAlertDialogBuilder(requireContext())
-                    .setMessage("Do you want to delete this challenge")
-                    .setTitle("Delete ${challenge.title}?")
+                    .setMessage("Do you want to delete this challenge?")
+                    .setTitle("Delete ${challenge.title}")
                     .setNegativeButton("No") { _, _ -> }
                     .setPositiveButton("Yes") { dialog, which ->
                         challengeAdapter.differ.submitList(viewModel.deleteItem(challenge))
@@ -72,7 +79,7 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
         val quotesList = resources.getStringArray(R.array.quotes)
         val quotesSize = quotesList.size
         val randNumber = (0..quotesSize-1).random()
-        tv_quote.text = quotesList[randNumber]
+        tv_quote.text = "\"${quotesList[randNumber]}\""
     }
 
     private fun initSharedPreferences(){

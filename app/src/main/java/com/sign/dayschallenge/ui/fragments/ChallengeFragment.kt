@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,6 +61,7 @@ class ChallengeFragment : Fragment() {
             }
 
 
+
         }
     }
 
@@ -69,6 +71,16 @@ class ChallengeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ChallengeFragmentLayoutBinding.inflate(inflater, container, false)
+        binding.ivBack.setOnClickListener {
+            Log.e("asds","sadsa")
+            (activity as MainActivity).onBackPressed()
+        }
+
+        binding.ivEdit.setOnClickListener {
+            val challenge = args.argChallenge
+            val action = ChallengeFragmentDirections.actionChallengeFragmentToEditChallengeFragment(challenge)
+            findNavController().navigate(action)
+        }
         return binding.root
     }
 
@@ -94,4 +106,5 @@ class ChallengeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

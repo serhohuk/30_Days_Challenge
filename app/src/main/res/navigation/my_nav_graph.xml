@@ -17,23 +17,29 @@
     <fragment
         android:id="@+id/challengeFragment"
         android:name="com.sign.dayschallenge.ui.fragments.ChallengeFragment"
+        tools:layout="@layout/challenge_fragment_layout"
         android:label="ChallengeFragment" >
+        <argument
+            android:name="argChallenge"
+            app:argType="com.sign.dayschallenge.data.Challenge" />
+        <action
+            android:id="@+id/action_challengeFragment_to_editChallengeFragment"
+            app:destination="@id/editChallengeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editChallengeFragment"
+        android:name="com.sign.dayschallenge.ui.fragments.EditChallengeFragment"
+        tools:layout="@layout/edit_challenge_fragment_layout"
+        android:label="EditChallengeFragment" >
         <argument
             android:name="argChallenge"
             app:argType="com.sign.dayschallenge.data.Challenge" />
     </fragment>
     <fragment
-        android:id="@+id/editChallengeFragment"
-        android:name="com.sign.dayschallenge.ui.fragments.EditChallengeFragment"
-        android:label="EditChallengeFragment" />
-    <fragment
         android:id="@+id/mainFragment"
         android:name="com.sign.dayschallenge.ui.fragments.MainFragment"
         tools:layout="@layout/main_fragment_layout"
         android:label="MainFragment" >
-        <action
-            android:id="@+id/action_mainFragment_to_editChallengeFragment"
-            app:destination="@id/editChallengeFragment" />
         <action
             android:id="@+id/action_mainFragment_to_challengeFragment"
             app:destination="@id/challengeFragment" />

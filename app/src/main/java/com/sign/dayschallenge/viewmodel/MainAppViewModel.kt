@@ -31,13 +31,11 @@ class MainAppViewModel @Inject constructor(private val repository: MainRepositor
         val resultDayState = challenge.daysState.toMutableList()
         for ((index, value) in challenge.daysState.withIndex()){
             if (isTimeOver(challenge.daysInMillis!![index])){
-                if(value.name == DayState.TODAY.name){
+                if(value.name == DayState.TODAY.name || value.name == DayState.EMPTY.name){
                     resultDayState[index] = DayState.SKIP_DAY
-                } else break
+                }
             }else if (TimeUtil.getCurrentLocalDateNow() == challenge.daysInMillis!![index] && resultDayState[index].name != DayState.COMPLETE_DAY.name ){
                 resultDayState[index] = DayState.TODAY
-            } else if (isTimeOver(challenge.daysInMillis!![index]) && value.name == DayState.EMPTY.name && resultDayState[index].name != DayState.COMPLETE_DAY.name){
-                resultDayState[index] = DayState.SKIP_DAY
             }
         }
         return resultDayState
