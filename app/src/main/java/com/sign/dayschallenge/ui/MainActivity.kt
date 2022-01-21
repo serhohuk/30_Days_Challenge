@@ -11,6 +11,9 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import com.sign.dayschallenge.R
 import com.sign.dayschallenge.application.MyApplication
 import com.sign.dayschallenge.di.AppComponent
@@ -29,10 +32,12 @@ class MainActivity : AppCompatActivity() {
     val viewModelApp : MainAppViewModel by viewModels { mainViewModelFactory  }
 
     private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        firebaseAnalytics = Firebase.analytics
         val appComponent = (application as MyApplication).appComponent
         appComponent.inject(this)
 

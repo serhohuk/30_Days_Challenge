@@ -26,6 +26,7 @@ import javax.inject.Inject
 import javax.inject.Named
 import android.view.animation.RotateAnimation
 import com.sign.dayschallenge.utils.AnimUtil.Companion.rotateView
+import java.lang.IllegalArgumentException
 
 
 class MainFragment : Fragment(R.layout.main_fragment_layout) {

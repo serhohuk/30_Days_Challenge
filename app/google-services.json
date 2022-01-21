@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "337216455357",
+    "project_id": "days-challenge-97709",
+    "storage_bucket": "days-challenge-97709.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337216455357:android:a4facdd40ae6d6961b2dd4",
+        "android_client_info": {
+          "package_name": "com.sign.dayschallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337216455357-b3e2688edfad8k64cho8la18cn5qm1u3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sign.dayschallenge",
+            "certificate_hash": "0634e2fe3e1230fc8505656ce72e6dfa29180227"
+          }
+        },
+        {
+          "client_id": "337216455357-r2dc67590p7sosjtf7qnc6h5s68d8ihk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaNsfa414MOKkm-odH9v7l3SkZzKPIaf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337216455357-r2dc67590p7sosjtf7qnc6h5s68d8ihk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
