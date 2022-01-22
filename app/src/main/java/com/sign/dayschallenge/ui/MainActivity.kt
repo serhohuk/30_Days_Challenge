@@ -23,6 +23,13 @@ import com.sign.dayschallenge.viewmodel.MainAppViewModel
 import com.sign.dayschallenge.viewmodel.MainFragmentViewModel
 import javax.inject.Inject
 import javax.inject.Named
+import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
+
+import android.util.DisplayMetrics
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,6 +73,18 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    fun setLocale(lang: String?) {
+        val myLocale = Locale(lang)
+        val res: Resources = resources
+        val dm: DisplayMetrics = res.displayMetrics
+        val conf: Configuration = res.configuration
+        conf.locale = myLocale
+        res.updateConfiguration(conf, dm)
+        val refresh = Intent(this, MainActivity::class.java)
+        startActivity(refresh)
+        finish()
     }
 
     private fun updateApplicationData(){

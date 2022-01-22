@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/general_settings">
+
+        <EditTextPreference
+            android:key="NAME"
+            android:title="@string/name"
+            android:summary="@string/change_name"
+            />
+
+        <ListPreference
+            android:key="app_language"
+            android:entries="@array/languages_array"
+            android:entryValues="@array/locales_array"
+            android:title="@string/language"
+            android:summary="@string/change_language"/>
+
+        <Preference app:title="@string/version"
+        android:summary="@string/versionName"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/additional_settings">
+
+        <SwitchPreference
+            android:key="show_quotes"
+            android:defaultValue="false"
+            android:title="Show Quotes"/>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

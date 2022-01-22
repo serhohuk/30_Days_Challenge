@@ -46,10 +46,18 @@
         <action
             android:id="@+id/action_mainFragment_to_createChallengeFragment"
             app:destination="@id/createChallengeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/createChallengeFragment"
         android:name="com.sign.dayschallenge.ui.fragments.CreateChallengeFragment"
         tools:layout="@layout/create_challenge_fragment_layout"
         android:label="CreateChallengeFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.sign.dayschallenge.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        />
 </navigation>

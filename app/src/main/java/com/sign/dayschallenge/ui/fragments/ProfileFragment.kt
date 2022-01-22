@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import com.sign.dayschallenge.R
 import com.sign.dayschallenge.utils.Constants.Companion.PROF_NAME
 import com.sign.dayschallenge.utils.Constants.Companion.PROF_SEX
@@ -24,7 +25,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment_layout) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
         initDropDownMenu()
 

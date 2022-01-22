@@ -1,9 +1,13 @@
 package com.sign.dayschallenge.ui.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
 import android.text.Layout
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.GridLayout
 import androidx.fragment.app.Fragment
@@ -25,11 +29,14 @@ import kotlinx.android.synthetic.main.main_fragment_layout.*
 import javax.inject.Inject
 import javax.inject.Named
 import android.view.animation.RotateAnimation
+import androidx.preference.PreferenceManager
 import com.sign.dayschallenge.utils.AnimUtil.Companion.rotateView
+import kotlinx.coroutines.processNextEventInCurrentThread
 import java.lang.IllegalArgumentException
+import java.util.*
 
 
-class MainFragment : Fragment(R.layout.main_fragment_layout) {
+class MainFragment : Fragment(R.layout.main_fragment_layout), SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Named("main_view_model")
     @Inject
@@ -42,6 +49,8 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
         super.onViewCreated(view, savedInstanceState)
         val appComponent = (requireActivity().application as MyApplication).appComponent
         appComponent.inject(this)
+
+
         initSharedPreferences()
         initStartScreen()
         setRandomQuote()
@@ -58,6 +67,11 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
 
         iv_settings.setOnClickListener {
             rotateView(60f, iv_settings)
+            findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
+        }
+
+        if (!sharedPreferences.getBoolean("show_quotes",false)){
+            tv_quote.visibility = View.GONE
         }
 
         challengeAdapter.setOnItemClickListener { challenge, listenerNumber ->
@@ -66,10 +80,10 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
                 findNavController().navigate(action)
             } else if (listenerNumber==1){
                 MaterialAlertDialogBuilder(requireContext())
-                    .setMessage("Do you want to delete this challenge?")
-                    .setTitle("Delete ${challenge.title}")
-                    .setNegativeButton("No") { _, _ -> }
-                    .setPositiveButton("Yes") { dialog, which ->
+                    .setMessage(getString(R.string.delete_challenge))
+                    .setTitle("${getString(R.string.delete)} ${challenge.title}")
+                    .setNegativeButton(getString(R.string.no_str)) { _, _ -> }
+                    .setPositiveButton(getString(R.string.yes_str)) { dialog, which ->
                         challengeAdapter.differ.submitList(viewModel.deleteItem(challenge))
                     }.show()
             }
@@ -84,7 +98,8 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
     }
 
     private fun initSharedPreferences(){
-        sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREF,Context.MODE_PRIVATE)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
     }
 
     private fun initStartScreen(){
@@ -110,5 +125,27 @@ class MainFragment : Fragment(R.layout.main_fragment_layout) {
                 ll_new_challenge.visibility = View.VISIBLE
             }
         })
+    }
+
+    override fun onSharedPreferenceChanged(prefs: SharedPreferences?, key: String?) {
+        when(key){
+            "app_language"->{
+                when(prefs?.getString("app_language","en")){
+                    "en"-> (activity as MainActivity).setLocale(resources.getStringArray(R.array.locales_array)[0])
+                    "es"-> (activity as MainActivity).setLocale(resources.getStringArray(R.array.locales_array)[1])
+                    "uk"-> (activity as MainActivity).setLocale(resources.getStringArray(R.array.locales_array)[2])
+                    "ru"-> (activity as MainActivity).setLocale(resources.getStringArray(R.array.locales_array)[3])
+                }
+            }
+            "show_quotes"->{
+                if (prefs?.getBoolean("show_quotes", false) == true){
+                    tv_quote.visibility = View.VISIBLE
+                } else{
+                    tv_quote.visibility = View.GONE
+                }
+
+
+            }
+        }
     }
 }
