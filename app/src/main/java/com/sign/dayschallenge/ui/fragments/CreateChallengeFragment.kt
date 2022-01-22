@@ -25,13 +25,14 @@ import kotlinx.android.synthetic.main.create_challenge_fragment_layout.*
 import javax.inject.Inject
 import javax.inject.Named
 
+val MY_REQUEST_CODE = 27
+
 class CreateChallengeFragment : Fragment(R.layout.create_challenge_fragment_layout) {
 
     @Inject
     @Named("challenge_view_model")
     lateinit var challengeViewModelFactory : ViewModelProvider.Factory
     val viewModel : ChallengeViewModel by viewModels { challengeViewModelFactory  }
-    val MY_REQUEST_CODE = 27
     private var resourceImage = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -27,6 +27,8 @@ class DayAdapter(val context : Context) : RecyclerView.Adapter<DayAdapter.DayIte
         override fun areContentsTheSame(oldItem: DayState, newItem: DayState): Boolean {
             return oldItem == newItem
         }
+
+        // TODO: 22.01.2022 has bug with items switch(for example 2 same values) because util compare only enum names
     }
 
     val differAsync = AsyncListDiffer(this,differUtilCallback)
