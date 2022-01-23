@@ -1,5 +1,37 @@
 <resources>
-    <string name="app_name">30 Days Challenge</string>
+    <string name="app_name">30 Днів Челендж</string>
     <string name="welcome_back">Ласкаво просимо</string>
+    <string name="name">Ім\'я</string>
+    <string name="male">Чоловік</string>
+    <string name="female">Жінка</string>
+    <string name="sex">Стать</string>
+    <string name="challenge">Челендж</string>
+    <string name="progress">1/30</string>
+    <string name="hide">Приховати</string>
+    <string name="fill_title">Будь ласка, впишіть назву</string>
+    <string name="choose_image">Будь ласка, оберіть зображення</string>
+    <string name="add_new_challenge">Додати новий челендж</string>
+    <string name="title">Назва</string>
+    <string name="description">Опис</string>
+    <string name="save">Зберегти</string>
+    <string name="challenge_icon">Значок челенджу</string>
+    <string name="confirm">Підтвердити</string>
+    <string name="delete_challenge">Хочете видалити цей челендж?</string>
+    <string name="delete">Видалити</string>
+    <string name="no_str">Ні</string>
+    <string name="yes_str">Так</string>
+    <string name="change_name">Змінити ім\'я</string>
+    <string name="language">Мова</string>
+    <string name="change_language">Змінити мову</string>
+    <string name="general_settings">Загальні налаштування</string>
+    <string name="additional_settings">Додаткові налаштування</string>
+    <string name="version">Версія</string>
+
+    <string-array name="languages_array">
+        <item>Англійська</item>
+        <item>Іспанська</item>
+        <item>Українська</item>
+        <item>Російська</item>
+    </string-array>
 
 </resources>

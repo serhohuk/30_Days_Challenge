@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="quotes">
-        <item>Opportunities don\'t happen, you create them.</item>
-        <item>It is never too late to be what you might have been.</item>
-        <item>Don\'t let someone else\'s opinion of you become your reality.</item>
-        <item>Set your goals high, and don\'t stop till you get there.</item>
-        <item>Life is like riding a bicycle. To keep your balance you must keep moving.</item>
-        <item>I have never let my schooling interfere with my education.</item>
-        <item>Be sure you put your feet in the right place, then stand firm.</item>
-        <item>Success is not final, failure is not fatal: it is the courage to continue that counts.</item>
-        <item>Success is stumbling from failure to failure with no loss of enthusiasm</item>
-        <item>Kites rise highest against the wind, not with it</item>
-        <item>Don\'t stop when you’re tired. Stop when you’re done.</item>
-        <item>All our dreams can come true, if we have the courage to pursue them</item>
-        <item>The secret of getting ahead is getting started</item>
+        <item>Las oportunidades no ocurren, tú las creas.</item>
+        <item>Nunca es demasiado tarde para ser lo que podrías haber sido.</item>
+        <item>No dejes que la opinión de otra persona sobre ti se convierta en tu realidad.</item>
+        <item>Establezca metas altas y no se detenga hasta alcanzarlas.</item>
+        <item>La vida es como andar en bicicleta. Para mantener el equilibrio debes seguir moviéndote.</item>
+        <item>Nunca he permitido que mis estudios interfieran con mi educación.</item>
+        <item>Asegúrese de poner los pies en el lugar correcto, luego manténgase firme.</item>
+        <item>El éxito no es definitivo, el fracaso no es fatal: lo que cuenta es el valor de continuar.</item>
+        <item>El éxito es tropezar de fracaso en fracaso sin perder el entusiasmo</item>
+        <item>Las cometas se elevan más alto contra el viento, no con él</item>
+        <item>No te detengas cuando estés cansado. Deténgase cuando haya terminado.</item>
+        <item>Todos nuestros sueños pueden hacerse realidad, si tenemos el coraje de perseguirlos</item>
+        <item>El secreto para salir adelante es empezar</item>
     </string-array>
 
 </resources>

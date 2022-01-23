@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="quotes">
-        <item>Opportunities don\'t happen, you create them.</item>
-        <item>It is never too late to be what you might have been.</item>
-        <item>Don\'t let someone else\'s opinion of you become your reality.</item>
-        <item>Set your goals high, and don\'t stop till you get there.</item>
-        <item>Life is like riding a bicycle. To keep your balance you must keep moving.</item>
-        <item>I have never let my schooling interfere with my education.</item>
-        <item>Be sure you put your feet in the right place, then stand firm.</item>
-        <item>Success is not final, failure is not fatal: it is the courage to continue that counts.</item>
-        <item>Success is stumbling from failure to failure with no loss of enthusiasm</item>
-        <item>Kites rise highest against the wind, not with it</item>
-        <item>Don\'t stop when you’re tired. Stop when you’re done.</item>
-        <item>All our dreams can come true, if we have the courage to pursue them</item>
-        <item>The secret of getting ahead is getting started</item>
+        <item>Возможности не случаются, вы их создаете.</item>
+        <item>Никогда не поздно стать тем, кем вы могли бы быть.</item>
+        <item>Не позволяйте чужому мнению о вас стать вашей реальностью.</item>
+        <item>Ставьте перед собой высокие цели и не останавливайтесь, пока не добьетесь их.</item>
+        <item>Жизнь похожа на езду на велосипеде. Чтобы сохранить равновесие, вы должны продолжать двигаться.</item>
+        <item>Я никогда не позволял школьному обучению мешать моему образованию.</item>
+        <item>Убедитесь, что вы правильно ставите ноги, а затем стойте твердо.</item>
+        <item>Успех не окончателен, неудача не фатальна: важна смелость продолжать.</item>
+        <item>Успех — это переход от неудачи к неудаче без потери энтузиазма</item>
+        <item>Воздушные змеи поднимаются выше всего против ветра, а не вместе с ним</item>
+        <item>Не останавливайтесь, если вы устали. Остановитесь, когда закончите.</item>
+        <item>Все наши мечты могут сбыться, если у нас хватит мужества осуществить их</item>
+        <item>Секрет успеха в том, чтобы начать</item>
     </string-array>
 
 </resources>

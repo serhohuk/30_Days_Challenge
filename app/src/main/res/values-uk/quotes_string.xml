@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="quotes">
-        <item>Opportunities don\'t happen, you create them.</item>
-        <item>It is never too late to be what you might have been.</item>
-        <item>Don\'t let someone else\'s opinion of you become your reality.</item>
-        <item>Set your goals high, and don\'t stop till you get there.</item>
-        <item>Life is like riding a bicycle. To keep your balance you must keep moving.</item>
-        <item>I have never let my schooling interfere with my education.</item>
-        <item>Be sure you put your feet in the right place, then stand firm.</item>
-        <item>Success is not final, failure is not fatal: it is the courage to continue that counts.</item>
-        <item>Success is stumbling from failure to failure with no loss of enthusiasm</item>
-        <item>Kites rise highest against the wind, not with it</item>
-        <item>Don\'t stop when you’re tired. Stop when you’re done.</item>
-        <item>All our dreams can come true, if we have the courage to pursue them</item>
-        <item>The secret of getting ahead is getting started</item>
+        <item>Можливості не з\'являються , ви створюєте їх.</item>
+        <item>Ніколи не пізно бути тим, ким ви могли б бути.</item>
+        <item>Не дозволяйте чужій думці про вас стати вашою реальністю.</item>
+        <item>Поставте перед собою високі цілі і не зупиняйтеся, поки не досягнете цього.</item>
+        <item>Життя схоже на їзду на велосипеді. Щоб зберегти рівновагу, ви повинні рухатися.</item>
+        <item>Я ніколи не дозволяв моєму навчанню заважати моїй освіті.</item>
+        <item>Переконайтеся, що ви поставили ноги в потрібне місце, а потім твердо встаньте.</item>
+        <item>Успіх не остаточний, невдача не смертельна: важлива мужність продовжувати.</item>
+        <item>Успіх – це спотикатися від невдачі до невдачі без втрати ентузіазму</item>
+        <item>Повітряні змії піднімаються найвище проти вітру, а не разом із ним</item>
+        <item>Не зупиняйтеся, коли ви втомилися. Зупиніться, коли закінчите.</item>
+        <item>Усі наші мрії можуть здійснитися, якщо ми маємо сміливість їх реалізовувати</item>
+        <item>Секрет успіху в тому, щоб почати</item>
     </string-array>
 
 </resources>

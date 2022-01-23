@@ -1,6 +1,38 @@
 <resources>
-    <string name="app_name">30 Days Challenge</string>
+    <string name="app_name">30 Дней Челлендж</string>
     <string name="welcome_back">Добро пожаловать</string>
+    <string name="name">Имя</string>
+    <string name="male">Мужчина</string>
+    <string name="female">Женщина</string>
+    <string name="sex">Пол</string>
+    <string name="challenge">Челлендж</string>
+    <string name="progress">1/30</string>
+    <string name="hide">Скрыть</string>
+    <string name="fill_title">Пожалуйста впишите название</string>
+    <string name="choose_image">Пожалуйста выберите картинку</string>
+    <string name="add_new_challenge">Добавить новый челлендж</string>
+    <string name="title">Название</string>
+    <string name="description">Описание</string>
+    <string name="save">Сохранить</string>
+    <string name="challenge_icon">Иконка челленджа</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="delete_challenge">Хотите удалить этот челлендж?</string>
+    <string name="delete">Удалить</string>
+    <string name="no_str">Нет</string>
+    <string name="yes_str">Да</string>
+    <string name="change_name">Сменить имя</string>
+    <string name="language">Язык</string>
+    <string name="change_language">Сменить язык</string>
+    <string name="general_settings">Основные настройки</string>
+    <string name="additional_settings">Дополнительные настройки</string>
+    <string name="version">Версия</string>
 
+
+    <string-array name="languages_array">
+        <item>Английский</item>
+        <item>Испанский</item>
+        <item>Украинский</item>
+        <item>Русский</item>
+    </string-array>
 
 </resources>
