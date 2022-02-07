@@ -39,6 +39,7 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/full_white"
         android:textSize="20sp"
+        android:visibility="invisible"
         android:gravity="left"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"

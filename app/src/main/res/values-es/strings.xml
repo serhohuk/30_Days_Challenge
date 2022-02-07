@@ -9,7 +9,6 @@
     <string name="progress">1/30</string>
     <string name="hide">Esconder</string>
     <string name="fill_title">Por favor complete el campo de título</string>
-    <cadena nombre="nombre">Nombre</cadena>
     <string name="choose_image">Por favor elija imagen</string>
     <string name="add_new_challenge">Agregar nuevo desafío</string>
     <string name="title">Título</string>
@@ -32,7 +31,7 @@
     <string-array name="languages_array">
         <item>Inglés</item>
         <item>Español</item>
-        <item>ucraniano</item>
+        <item>Ucraniano</item>
         <item>Ruso</item>
     </string-array>
     <string name="version">Version</string>

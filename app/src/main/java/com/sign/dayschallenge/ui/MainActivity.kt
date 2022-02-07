@@ -26,8 +26,10 @@ import javax.inject.Named
 import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.os.Build
 
 import android.util.DisplayMetrics
+import androidx.preference.PreferenceManager
 import java.util.*
 
 
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loadLocale()
         setContentView(R.layout.activity_main)
         firebaseAnalytics = Firebase.analytics
         val appComponent = (application as MyApplication).appComponent
@@ -85,6 +88,18 @@ class MainActivity : AppCompatActivity() {
         val refresh = Intent(this, MainActivity::class.java)
         startActivity(refresh)
         finish()
+    }
+
+    private fun loadLocale(){
+        val config = resources.configuration
+        val lang = PreferenceManager.getDefaultSharedPreferences(applicationContext).getString("app_language","en")
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        config.setLocale(locale)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            createConfigurationContext(config)
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 
     private fun updateApplicationData(){

@@ -29,6 +29,7 @@ import kotlinx.android.synthetic.main.main_fragment_layout.*
 import javax.inject.Inject
 import javax.inject.Named
 import android.view.animation.RotateAnimation
+import android.widget.TextView
 import androidx.preference.PreferenceManager
 import com.sign.dayschallenge.utils.AnimUtil.Companion.rotateView
 import kotlinx.coroutines.processNextEventInCurrentThread
@@ -45,6 +46,8 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SharedPreferences.
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var challengeAdapter : ChallengeAdapter
 
+    private lateinit var tvQuotes : TextView
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val appComponent = (requireActivity().application as MyApplication).appComponent
@@ -56,6 +59,13 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SharedPreferences.
         setRandomQuote()
         setRecyclerView()
         setChallengeItems()
+
+        tvQuotes = view.findViewById(R.id.tv_quote)
+        if (PreferenceManager.getDefaultSharedPreferences(requireContext()).getBoolean("show_quotes", false)){
+            tvQuotes.visibility = View.VISIBLE
+        } else {
+            tvQuotes.visibility = View.INVISIBLE
+        }
 
         fab_button.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_createChallengeFragment)
@@ -127,6 +137,10 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SharedPreferences.
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onSharedPreferenceChanged(prefs: SharedPreferences?, key: String?) {
         when(key){
             "app_language"->{
@@ -139,12 +153,10 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SharedPreferences.
             }
             "show_quotes"->{
                 if (prefs?.getBoolean("show_quotes", false) == true){
-                    tv_quote.visibility = View.VISIBLE
+                    tvQuotes.visibility = View.VISIBLE
                 } else{
-                    tv_quote.visibility = View.GONE
+                    tvQuotes.visibility = View.INVISIBLE
                 }
-
-
             }
         }
     }
