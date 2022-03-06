@@ -54,7 +54,7 @@ class ChallengeFragment : Fragment() {
                             if (activity!=null){
                                 val result = (activity as MainActivity).viewModelApp.updateOneItem(args.argChallenge, 1, position)
                                 (activity as MainActivity).viewModelApp.updateChallenge(result)
-                                dayAdapter.differAsync.submitList(result.daysState)
+                                dayAdapter.differAsync.submitList(result.daysInMillis?.zip(result.daysState))
                             }
                         }.show()
                 }
@@ -87,7 +87,7 @@ class ChallengeFragment : Fragment() {
     private fun initRecyclerView(){
         val space = resources.getDimensionPixelSize(R.dimen.rec_view)
         dayAdapter = DayAdapter(requireContext())
-        dayAdapter.differAsync.submitList(args.argChallenge.daysState)
+        dayAdapter.differAsync.submitList(args.argChallenge.daysInMillis?.zip(args.argChallenge.daysState))
         binding.rvContent.apply{
             adapter = dayAdapter
             layoutManager = object : GridLayoutManager(requireContext(), 5, VERTICAL, false){

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.graphics.Rect
 import android.os.Bundle
 import android.text.Layout
 import android.util.DisplayMetrics
@@ -31,6 +32,7 @@ import javax.inject.Named
 import android.view.animation.RotateAnimation
 import android.widget.TextView
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sign.dayschallenge.utils.AnimUtil.Companion.rotateView
 import kotlinx.coroutines.processNextEventInCurrentThread
 import java.lang.IllegalArgumentException
@@ -122,7 +124,20 @@ class MainFragment : Fragment(R.layout.main_fragment_layout), SharedPreferences.
         rec_view_challenge.apply {
             adapter = challengeAdapter
             layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL,false)
+            addItemDecoration(object : RecyclerView.ItemDecoration(){
 
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    super.getItemOffsets(outRect, view, parent, state)
+                    val space = resources.getDimensionPixelSize(R.dimen.rec_view)
+                    if (parent.getChildAdapterPosition(view)%2!=0) outRect.right = space
+                }
+
+            })
         }
     }
 

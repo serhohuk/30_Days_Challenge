@@ -19,19 +19,18 @@ class DayAdapter(val context : Context) : RecyclerView.Adapter<DayAdapter.DayIte
 
     var itemCLickListener : ((Int, Int)->Unit)? = null
 
-    private val differUtilCallback = object : DiffUtil.ItemCallback<DayState>(){
-        override fun areItemsTheSame(oldItem: DayState, newItem: DayState): Boolean {
-            return oldItem.name == newItem.name
+    private val differUtilCallback = object : DiffUtil.ItemCallback<Pair<Long,DayState>>(){
+        override fun areItemsTheSame(oldItem: Pair<Long,DayState>, newItem: Pair<Long,DayState>): Boolean {
+            return oldItem.first == newItem.first
         }
 
-        override fun areContentsTheSame(oldItem: DayState, newItem: DayState): Boolean {
+        override fun areContentsTheSame(oldItem: Pair<Long,DayState>, newItem: Pair<Long,DayState>): Boolean {
             return oldItem == newItem
         }
-
-        // TODO: 22.01.2022 has bug with items switch(for example 2 same values) because util compare only enum names
     }
 
     val differAsync = AsyncListDiffer(this,differUtilCallback)
+
 
     inner class DayItemViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         private val itemCardView : CardView
@@ -73,7 +72,7 @@ class DayAdapter(val context : Context) : RecyclerView.Adapter<DayAdapter.DayIte
     }
 
     override fun onBindViewHolder(holder: DayItemViewHolder, position: Int) {
-        holder.bind((position+1).toString(),differAsync.currentList[position].ordinal, position)
+        holder.bind((position+1).toString(),differAsync.currentList[position].second.ordinal, position)
     }
 
     override fun getItemCount(): Int {
