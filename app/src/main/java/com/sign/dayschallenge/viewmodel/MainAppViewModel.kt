@@ -27,6 +27,15 @@ class MainAppViewModel @Inject constructor(private val repository: MainRepositor
         }
     }
 
+    fun setEndedState(challenge: Challenge){
+        challenge.daysInMillis?.let {
+            if (it[it.size-1]<System.currentTimeMillis()){
+                challenge.challengeEnded = true
+                updateChallenge(challenge)
+            }
+        }
+    }
+
     fun getNewDayStateList(challenge : Challenge) : List<DayState>{
         val resultDayState = challenge.daysState.toMutableList()
         for ((index, value) in challenge.daysState.withIndex()){

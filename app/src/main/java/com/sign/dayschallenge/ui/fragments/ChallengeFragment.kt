@@ -40,6 +40,8 @@ class ChallengeFragment : Fragment() {
 
         initRecyclerView()
 
+        if (args.argChallenge.challengeEnded) Toast.makeText(requireContext(), "ENDED", Toast.LENGTH_SHORT).show()
+
         dayAdapter.itemCLickListener = { dayState, position->
             when(dayState){
                 DayState.EMPTY.ordinal, DayState.SKIP_DAY.ordinal ->{

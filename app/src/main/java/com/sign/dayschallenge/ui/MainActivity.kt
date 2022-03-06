@@ -103,10 +103,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateApplicationData(){
-        viewModelApp.allDataFromDB.observe(this, {
-            for (item in it){
-                viewModelApp.updateDayState(item.id,viewModelApp.getNewDayStateList(item))
+        viewModelApp.allDataFromDB.observe(this) {
+            for (item in it) {
+                viewModelApp.updateDayState(item.id, viewModelApp.getNewDayStateList(item))
+                viewModelApp.setEndedState(item)
             }
-        })
+        }
     }
 }

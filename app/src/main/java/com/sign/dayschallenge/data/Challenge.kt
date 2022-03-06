@@ -14,5 +14,6 @@ data class Challenge(
     var description : String?,
     var daysPassed : Int,
     var daysInMillis : List<Long>?,
-    var daysState : List<DayState>
+    var daysState : List<DayState>,
+    var challengeEnded : Boolean = false
 ) : Serializable

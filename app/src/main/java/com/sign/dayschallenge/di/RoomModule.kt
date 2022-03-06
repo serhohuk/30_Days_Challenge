@@ -7,6 +7,8 @@ import androidx.room.Room
 import com.sign.dayschallenge.data.AppDatabase
 import com.sign.dayschallenge.data.ChallengeDao
 import com.sign.dayschallenge.data.MIGRATION_1_2
+import com.sign.dayschallenge.data.MIGRATION_2_3
+
 
 import dagger.Module
 import dagger.Provides
@@ -23,7 +25,7 @@ class RoomModule(private val application: Application) {
             context,
             AppDatabase::class.java,
             "my_db")
-            .addMigrations(MIGRATION_1_2)
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
             .build()
 
     @Singleton
