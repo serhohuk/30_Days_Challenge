@@ -21,6 +21,6 @@ interface ChallengeDao {
     @Delete
     suspend fun deleteChallenge(challenge: Challenge)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateChallenge(challenge: Challenge)
 }

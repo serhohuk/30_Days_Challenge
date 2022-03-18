@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         val appComponent = (application as MyApplication).appComponent
         appComponent.inject(this)
 
-        sharedPreferences = getSharedPreferences(SHARED_PREF,Context.MODE_PRIVATE)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         updateApplicationData()
         setNavigationGraph()
     }
